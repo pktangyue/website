@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load hosts %}
+{% block content %}
+  <h1>{{ tag.name }}</h1>
+  <hr/>
+  <ul>
+    {% for post in tag.posts %}
+      <li>
+        <time datetime="{{ post.date|date:"Y-m-d" }}">{{ post.date|date:"Y-m-d" }}</time>
+        &raquo;
+        <a class='post-link' href="{% host_url 'post' post.url host 'blog' %}">{{ post.title }}</a>
+      </li>
+    {% endfor %}
+  </ul>
+{% endblock %}

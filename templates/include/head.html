@@ -1,0 +1,30 @@
+{% load compress %}
+{% load static %}
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% if post.title %}{{ post.title }} | {% endif %}{{ site.title }}个人网站</title>
+  <meta name="description" content="{{ site.description }}">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/manifest.json">
+  <meta name="theme-color" content="#ffffff">
+  {% compress css file bootstrap %}
+    <link type="text/x-scss" rel="stylesheet" href="{% static 'scss/custom_bootstrap/bootstrap.scss' %}" charset="utf-8">
+  {% endcompress %}
+  {% compress css file default %}
+    <link type="text/x-scss" rel="stylesheet" href="{% static 'scss/default.scss' %}" charset="utf-8">
+  {% endcompress %}
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?a1e4efc6ff40d3a77e6cffc35f414b22";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+  <link rel="alternate" type="application/rss+xml" title="{{ site.title }}" href="/feed.xml">
+</head>

@@ -1,0 +1,13 @@
+{% load hosts %}
+<p class='post-subhead text-secondary'>
+  <span>目录:</span>
+  {% for cat in post.categories %}
+    <a class='post-cat' href="{% host_url 'post' 'categories/'|add:cat|add:'.html' host 'blog' %}" title='{{ cat }}'><i class="fa fa-bars" aria-hidden="true"></i>{{ cat }}</a>
+  {% endfor %}
+  <span>| 标签:</span>
+  {% for tag in post.tags %}
+    <a class='post-tag' href="{% host_url 'post' 'tags/'|add:tag|add:'.html' host 'blog' %}" title="{{ tag }}"><i class="fa fa-tag" aria-hidden="true"></i>{{ tag }}</a>
+  {% endfor %}
+  <span>| 发布时间:</span>
+  <time datetime="{{ post.date|date:"Y-m-d H:i" }}">{{ post.date|date:"Y-m-d H:i" }}</time>
+</p>

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load hosts %}
+{% block content %}
+{% for post in paginator.posts %}
+<header class='post-header'>
+  <h1 class='post-title'>
+    <a class='post-link' href="{% host_url 'post' post.url host 'blog' %}">{{ post.title }}</a>
+  </h1>
+  {% include 'include/post-subhead.html' %}
+</header>
+<article class='post-content clearfix'>
+  {% autoescape off %}
+  {% if site.excerpt_separator in post.content %}
+    {{ post.excerpt }}
+    <p><a href="{% host_url 'post' post.url host 'blog' %}">阅读更多>></a></p>
+  {% else %}
+    {{ post.content }}
+  {% endif %}
+  {% endautoescape %}
+</article>
+{% if forloop.last %}
+{% else %}
+  <hr class='my-5'/>
+{% endif %}
+{% endfor %}
+{% if paginator.next_page %}
+  <div class='more-post'><a href='javascript:void(0);' data-url='{% host_url 'post' paginator.next_page host 'blog' %}' id='more-link' class='btn btn-outline-primary btn-lg btn-block'>加载更多</a></div>
+{% endif %}
+{% endblock %}
