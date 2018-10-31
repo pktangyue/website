@@ -153,7 +153,6 @@ class BlogPost(Post):
                 'pymdownx.tasklist',
                 'pymdownx.magiclink',
                 'pymdownx.superfences',
-                'nl2br',
             ],
             extension_configs={
                 'pymdownx.highlight': {
