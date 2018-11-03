@@ -6,7 +6,6 @@ class BlogConfig(AppConfig):
     # 分页
     paginate = 10
     # 页面设置
-    title = 'pktangyue'
     excerpt_separator = '<!-- more -->'
 
     def to_dict(self):

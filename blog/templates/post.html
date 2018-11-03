@@ -1,31 +1,31 @@
 {% extends 'base.html' %}
 {% load hosts %}
 {% block content %}
-<header class='post-header'>
-  <h1 class="post-title text-primary">{{ post.title }}</h1>
-  {% if post.subtitle %}
-    <h3>&nbsp;&nbsp;&nbsp;&nbsp;—— {{ post.subtitle }}</h3>
-  {% endif %}
-  {% include 'include/post-subhead.html' %}
-</header>
-<article class='post-content clearfix'>
-  {% autoescape off %}
-  {{ post.content }}
-  {% endautoescape %}
-</article>
-{% include 'include/comments.html' %}
-<nav class='my-3'>
-  <div class='row'>
-    <div class='col text-left'>
-      {% if post.previous %}
-        <a href="{% host_url 'post' post.previous.url host 'blog' %}" title="{{ post.previous.title }}">&larr; {{ post.previous.title }}</a>
-      {% endif %}
+  <header class='post-header'>
+    <h1 class="post-title text-primary">{{ post.title }}</h1>
+    {% if post.subtitle %}
+      <h3>&nbsp;&nbsp;&nbsp;&nbsp;—— {{ post.subtitle }}</h3>
+    {% endif %}
+    {% include 'include/post-subhead.html' %}
+  </header>
+  <article class='post-content clearfix'>
+    {% autoescape off %}
+      {{ post.content }}
+    {% endautoescape %}
+  </article>
+  <nav class='my-3'>
+    <div class='row'>
+      <div class='col text-left'>
+        {% if post.previous %}
+          <a href="{% host_url 'post' post.previous.url host 'blog' %}" title="{{ post.previous.title }}">&larr; {{ post.previous.title }}</a>
+        {% endif %}
+      </div>
+      <div class='col text-right'>
+        {% if post.next %}
+          <a href="{% host_url 'post' post.next.url host 'blog' %}" title="{{ post.next.title }}">{{ post.next.title }} &rarr;</a>
+        {% endif %}
+      </div>
     </div>
-    <div class='col text-right'>
-      {% if post.next %}
-        <a href="{% host_url 'post' post.next.url host 'blog' %}" title="{{ post.next.title }}">{{ post.next.title }} &rarr;</a>
-      {% endif %}
-    </div>
-  </div>
-</nav>
+  </nav>
+  {% include 'include/comments.html' %}
 {% endblock %}
