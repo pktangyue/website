@@ -197,6 +197,7 @@ class BlogPost(Post):
         d['content'] = content
         d['excerpt'] = content.split(app_config.excerpt_separator)[0]
         d['url'] = self.url
+        d['name'] = self.name
         if self.previous and nested:
             d['previous'] = self.previous.to_dict(nested=False)
         if self.next and nested:

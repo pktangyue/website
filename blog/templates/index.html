@@ -10,7 +10,7 @@
 </header>
 <article class='post-content clearfix'>
   {% autoescape off %}
-  {% if site.excerpt_separator in post.content %}
+  {% if app.excerpt_separator in post.content %}
     {{ post.excerpt }}
     <p><a href="{% host_url 'post' post.url host 'blog' %}">阅读更多>></a></p>
   {% else %}
