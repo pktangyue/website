@@ -46,7 +46,7 @@ class Command(BaseCommand):
             )
 
     def write_file_func(self, template, output, filename, context, resources=None):
-        context['active'] = 'note'
+        context['app'] = app_config.to_dict()
         output_html = render_to_string(template, context)
         with open(os.path.join(output, filename), mode='w', encoding='UTF-8') as f:
             f.write(output_html)

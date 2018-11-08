@@ -40,7 +40,6 @@ class BlogSite(metaclass=Singleton):
         paginate = app_config.paginate
         return len(self.posts) // paginate + int(bool(len(self.posts) % paginate))
 
-
     def __next__(self):
         paginate = app_config.paginate
         result = OrderedDict()
@@ -73,10 +72,6 @@ class BlogSite(metaclass=Singleton):
         # 标签归类
         for tag_name in post.tags:
             self.tags[tag_name].posts[post.name] = post
-
-    @functools.lru_cache()
-    def to_dict(self):
-        return app_config.to_dict()
 
 
 class BlogPaginatePage(object):
@@ -155,7 +150,7 @@ class BlogPost(Post):
                 'pymdownx.superfences',
             ],
             extension_configs={
-                'pymdownx.highlight': {
+                'pymdownx.highlight'  : {
                     'noclasses'     : True,
                     'pygments_style': 'github',
                 },

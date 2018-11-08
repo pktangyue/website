@@ -7,13 +7,13 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item {% if not active %}active{% endif %}">
+        <li class="nav-item {% if not app.name %}active{% endif %}">
           <a class="nav-link" href="{% host_url 'index' host 'www' %}">首页</a>
         </li>
-        <li class="nav-item {% if active == 'blog' %}active{% endif %}">
+        <li class="nav-item {% if app.name == 'blog' %}active{% endif %}">
           <a class="nav-link" href="{% host_url 'index' host 'blog' %}">博客</a>
         </li>
-        <li class="nav-item {% if active == 'note' %}active{% endif %}">
+        <li class="nav-item {% if app.name == 'note' %}active{% endif %}">
           <a class="nav-link" href="{% host_url 'index' host 'note' %}">笔记</a>
         </li>
       </ul>

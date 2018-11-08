@@ -108,9 +108,8 @@ class Command(BaseCommand):
         self.stdout.write('生成 post...')
         for post in tqdm(self.blog_site.posts.values()):
             output_html = render_to_string('post.html', {
-                'post'  : post.to_dict(),
-                'site'  : self.blog_site.to_dict(),
-                'active': 'blog',
+                'post': post.to_dict(),
+                'app' : app_config.to_dict(),
             })
             output_filename = self.get_output_filename(post.url)
             with open(output_filename, mode='w', encoding='UTF-8') as f:
@@ -121,8 +120,7 @@ class Command(BaseCommand):
         for paginate_page in tqdm(self.blog_site):
             output_html = render_to_string('index.html', {
                 'paginator': paginate_page.to_dict(),
-                'site'     : self.blog_site.to_dict(),
-                'active'   : 'blog',
+                'app'      : app_config.to_dict(),
             })
             output_filename = self.get_output_filename(paginate_page.url)
             with open(output_filename, mode='w', encoding='UTF-8') as f:
@@ -133,8 +131,7 @@ class Command(BaseCommand):
         for category in tqdm(self.blog_site.categories.values()):
             output_html = render_to_string('categories.html', {
                 'category': category.to_dict(),
-                'site'    : self.blog_site.to_dict(),
-                'active'  : 'blog',
+                'app'     : app_config.to_dict(),
             })
             output_filename = self.get_output_filename(category.url)
             with open(output_filename, mode='w', encoding='UTF-8') as f:
@@ -144,9 +141,8 @@ class Command(BaseCommand):
         self.stdout.write('生成 tags...')
         for tag in tqdm(self.blog_site.tags.values()):
             output_html = render_to_string('tags.html', {
-                'tag'   : tag.to_dict(),
-                'site'  : self.blog_site.to_dict(),
-                'active': 'blog',
+                'tag': tag.to_dict(),
+                'app': app_config.to_dict(),
             })
             output_filename = self.get_output_filename(tag.url)
             with open(output_filename, mode='w', encoding='UTF-8') as f:

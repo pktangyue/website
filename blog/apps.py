@@ -9,15 +9,9 @@ class BlogConfig(AppConfig):
     excerpt_separator = '<!-- more -->'
 
     def to_dict(self):
-        names = (
-            'title',
+        keys = (
+            'name',
             'excerpt_separator',
         )
 
-        d = {}
-        for name in names:
-            value = getattr(self, name, None)
-            if value:
-                d[name] = value
-
-        return d
+        return {k: getattr(self, k, None) for k in keys}
