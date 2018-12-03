@@ -17,6 +17,7 @@
   {% compress js file default %}
     <script src="{% static 'js/default.js' %}" type="text/javascript" charset="utf-8"></script>
   {% endcompress %}
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
   {% block script %}{% endblock %}
 </body>
 </html>
