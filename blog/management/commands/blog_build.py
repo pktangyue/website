@@ -153,7 +153,8 @@ class Command(BaseCommand):
         post_path = os.path.join(app_config.path, 'posts')
         for post in tqdm(self.blog_site.posts.values()):
             with open(os.path.join(post_path, post.filename), mode='wb') as f:
-                frontmatter.dump(post, f, handler=RuamelYamlHandler(), allow_unicode=True)
+                content = frontmatter.dumps(post, handler=RuamelYamlHandler(), allow_unicode=True)
+                f.write((content + '\n').encode('utf-8'))
 
     def save_to_db(self):
         Post.objects.update(active=False)
