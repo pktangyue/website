@@ -119,3 +119,4 @@ assets/
 .idea/
 template_strings/
 resources/
+.DS_Store
